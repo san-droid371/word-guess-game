@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/word-guess-game/static/css/main.c2ffe476.css",
+    "main.js": "/word-guess-game/static/js/main.7641fffd.js",
+    "static/media/wrong.mp3": "/word-guess-game/static/media/wrong.068548ac87552a309f66.mp3",
+    "static/media/correct.mp3": "/word-guess-game/static/media/correct.e51835e1442757ca5fae.mp3",
+    "index.html": "/word-guess-game/index.html",
+    "main.c2ffe476.css.map": "/word-guess-game/static/css/main.c2ffe476.css.map",
+    "main.7641fffd.js.map": "/word-guess-game/static/js/main.7641fffd.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c2ffe476.css",
+    "static/js/main.7641fffd.js"
+  ]
+}
