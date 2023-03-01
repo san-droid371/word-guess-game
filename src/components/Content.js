@@ -6,7 +6,7 @@ import correct from "./sounds/correct.mp3"
 import wrong from "./sounds/wrong.mp3";
 function Content() {
 
-    const [word, setWord] = useState("a");
+    const [word, setWord] = useState(" ");
     const [hint, setHint] = useState("");
     const [guess, setGuess] = useState(5);
     const [subValue, setSubValue] = useState(true);
@@ -17,14 +17,12 @@ function Content() {
     const corrAudioRef = React.useRef(null);
     const wrongAudioRef = React.useRef(null);
 
-    //to set opacity
-    const [opacityCorrect, setOpacityCorrect] = useState(1);
-    const [opacityWrong, setOpacityWrong] = useState(0.2);
+    //to access lights
     const greenLight = document.getElementById("green");
     const redLight = document.getElementById("red");
 
-    let styleCorrect = `opacity:${opacityCorrect};transform:scale(1.2);`
-    let styleWrong = `opacity:${opacityWrong}; transform:scale(1)`;
+    let styleCorrect = `opacity:1;transform:scale(1.2);`
+    let styleWrong = `opacity:0.2; transform:scale(1)`;
 
 
     let randomWord = () => {
@@ -34,8 +32,10 @@ function Content() {
         setCorrects([]);
         setSubValue(true);
         setGuess(5);
-        setOpacityCorrect(1);
-        setOpacityWrong(0.2);
+        if (greenLight && redLight) {
+            greenLight.style = "opacity:0.2;transform:scale(1)";
+            redLight.style = "opacity:0.2;transform:scale(1)";
+        }
     }
 
     useEffect(() => {
@@ -46,12 +46,12 @@ function Content() {
     //to check if the user input is a character or string
     let checkInputType = (e) => {
         let val = e.target.value;
-        setTypingInput(val)
+        setTypingInput(val.toLowerCase())
         if (val === "") {
             setSubValue(true)
         }
         if (val.match(/^[A-Za-z]+$/)) {
-            console.log(val);
+            // console.log(val);
             setSubValue(false)
         }
 
@@ -77,7 +77,7 @@ function Content() {
                     }
                 }
                 setCorrects(newCorrects);
-                console.log("true");
+                // console.log("true");
                 corrAudioRef.current.play();
                 greenLight.style = styleCorrect;
                 redLight.style = styleWrong;
@@ -90,16 +90,19 @@ function Content() {
                 redLight.style = styleCorrect;
 
             }
+            //to change the lights after a check
             setTimeout(() => {
                 greenLight.style.transform = "scale(1)";
                 redLight.style.transform = "scale(1)";
             }, 1000);
         }
+
+        //if the typing input is a string
         else {
             if (typingInput === word) {
                 let strCorrects = typingInput.split("");
 
-                console.log("true");
+                // console.log("true");
                 corrAudioRef.current.play();
                 setCorrects(strCorrects);
                 greenLight.style = styleCorrect;
@@ -118,10 +121,10 @@ function Content() {
             alert(`Congratulations! You've found the word ${word.toUpperCase()}`);
             randomWord();
         } else if (guess < 1) {
-            alert(`Game Over! The Word is ${word.toUpperCase()} `);
+            alert(`Game Over! The Word is ${word.toUpperCase()} Try Again :)`);
             randomWord();
         }
-    }, 100);
+    }, 500);
 
 
 

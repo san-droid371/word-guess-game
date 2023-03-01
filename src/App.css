@@ -160,3 +160,10 @@ button:hover {
   color: #2f3132;
   background: transparent;
 }
+
+
+@media screen and (max-width: 600px) {
+  .container{
+    width: 95vw;
+  }
+}
