@@ -164,6 +164,25 @@ button:hover {
 
 @media screen and (max-width: 600px) {
   .container{
-    width: 95vw;
+    width: 90vw;
   }
+  .header {
+    color: #fff;
+    background: #2f3132;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+  .inputs input {
+    height: 43px;
+    width: 43px;
+    margin: 4px;
+  }
+  .info-box .form-group input {
+    padding: 12px 30px;
+    margin: 0px 42px;
+  }
+  .info-box p {
+    font-size: 1rem;
+  }
+
 }
